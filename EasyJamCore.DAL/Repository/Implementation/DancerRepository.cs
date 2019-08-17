@@ -1,13 +1,11 @@
-﻿using EasyJamCore.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EasyJamCore.Common.Model;
+using EasyJamCore.DAL.Entities;
 
 namespace EasyJamCore.DAL.Repository.Implementation
 {
-    public class DancerRepository : GenericRepository<DancerEntity>, IDancerRepository
+    public class DancerRepository : GenericRepository<DancerModel,DancerEntity>, IDancerRepository
     {
-        public DancerRepository(EasyJamCoreDbContext dbContext) : base(dbContext)
+        public DancerRepository(EasyJamCoreDbContext _dbContext) : base(_dbContext)
         {
         }
     }

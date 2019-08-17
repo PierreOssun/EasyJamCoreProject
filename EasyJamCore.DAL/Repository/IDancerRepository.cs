@@ -1,8 +1,9 @@
-﻿using EasyJamCore.DAL.Entities;
+﻿using EasyJamCore.Common.Model;
+using EasyJamCore.DAL.Entities;
 
 namespace EasyJamCore.DAL.Repository
 {
-    public interface IDancerRepository : IGenericRepository<DancerEntity>
+    public interface IDancerRepository : IGenericRepository<DancerModel,DancerEntity>
     {
     }
 }

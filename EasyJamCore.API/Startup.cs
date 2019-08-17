@@ -1,4 +1,6 @@
 ﻿using System;
+using AutoMapper;
+using EasyJamCore.API.Modules;
 using EasyJamCore.DAL.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,8 +29,12 @@ namespace EasyJamCore.API
             .Build();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EasyJamCoreDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddAutoMapper(typeof(Startup));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            DependencyConfiguration.ConfiguredDependencyInjection(services);
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
