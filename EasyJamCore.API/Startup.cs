@@ -2,6 +2,7 @@
 using AutoMapper;
 using EasyJamCore.API.Modules;
 using EasyJamCore.DAL.Entities;
+using EasyJamCore.DAL.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,8 +30,16 @@ namespace EasyJamCore.API
             .Build();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EasyJamCoreDbContext>(options => options.UseSqlServer(connectionString));
-            services.AddAutoMapper(typeof(Startup));
+
+            services.AddAutoMapper(typeof(AutoMapperConfiguration));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "EasyJam" });
+            });
+
             DependencyConfiguration.ConfiguredDependencyInjection(services);
         }
 
@@ -47,6 +56,19 @@ namespace EasyJamCore.API
             {
                 app.UseHsts();
             }
+
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(option =>
+            {
+                option.RouteTemplate = swaggerOptions.JsonRoute;
+            });
+
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();

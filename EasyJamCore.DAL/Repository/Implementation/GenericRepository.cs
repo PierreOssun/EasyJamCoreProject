@@ -19,23 +19,34 @@ namespace EasyJamCore.DAL.Repository.Implementation
 
         public async Task Add(TModel model)
         {
-            var entity = _mapper.Map<TModel,TEntity>(model);
-            await _dbContext.AddAsync(entity);
+            try
+            {
+                var entity = _mapper.Map<TModel, TEntity>(model);
+
+                await _dbContext.AddAsync(entity);
+            }
+            catch (System.Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task SaveAsync()
         {
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (System.Exception e)
+            {
+
+                throw e;
+            }
         }
 
         public GenericRepository(EasyJamCoreDbContext dbContext, IMapper mapper)
         {
             _mapper = mapper;
-            _dbContext = dbContext;
-        }
-
-        public GenericRepository(EasyJamCoreDbContext dbContext)
-        {
             _dbContext = dbContext;
         }
 

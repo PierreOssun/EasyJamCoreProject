@@ -8,7 +8,7 @@ namespace EasyJamCore.API.Modules
     {
         public static void ConfiguredDependencyInjection(IServiceCollection services)
         {
-            services.AddScoped<IDancerRepository, DancerRepository>();
+            services.AddSingleton<IDancerRepository, DancerRepository>();
         }
     }
 }
