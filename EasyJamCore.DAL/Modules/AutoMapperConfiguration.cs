@@ -9,6 +9,8 @@ namespace EasyJamCore.DAL.Modules
         public AutoMapperConfiguration()
         {
             CreateMap<DancerModel, DancerEntity>();
+            CreateMap<DancerEntity, DancerModel>();
+
             CreateMap<BattleModel, BattleEntity>();
             CreateMap<BattleParticipantModel, BattleParticipantEntity>();
             CreateMap<BattlePreliminaryModel, BattlePreliminaryEntity>();

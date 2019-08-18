@@ -5,6 +5,7 @@ using EasyJamCore.DAL.Repository;
 using EasyJamCore.DAL.Repository.Implementation;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,16 +15,23 @@ namespace EasyJamCore.API.Controllers
     [ApiController]
     public class DancerController : Controller
     {
-        private IDancerRepository iiDancerRepository;
-        public DancerController(EasyJamCoreDbContext context, IMapper mapper)
+        private readonly IDancerRepository iiDancerRepository;
+        public DancerController(IDancerRepository dancerRepository)
         {
-            iiDancerRepository = new DancerRepository(context, mapper);
+            iiDancerRepository = dancerRepository;
         }
 
-        [HttpGet("GetDancers")]
-        public ActionResult<IEnumerable<string>> Get()
+        [HttpGet("GetDancerById")]
+        public async Task<IActionResult> GetDancerById(int id)
         {
-            return new string[] { "value3", "value2" };
+            var dancer = iiDancerRepository.GetById(id);
+
+            if(dancer == null)
+            {
+                return NotFound();
+            }
+
+            return View(dancer);
         }
 
         [HttpPost("PostDancers")]  
@@ -34,12 +42,11 @@ namespace EasyJamCore.API.Controllers
                 if (ModelState.IsValid)
                 {
                     iiDancerRepository.Add(dancer);
-                    iiDancerRepository.SaveAsync();
+                    iiDancerRepository.SaveChanges();
                 }
             }
             catch (System.Exception e)
             {
-                //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
                 ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
                 throw e;
             }

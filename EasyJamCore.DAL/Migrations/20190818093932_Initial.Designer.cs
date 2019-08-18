@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyJamCore.DAL.Migrations
 {
     [DbContext(typeof(EasyJamCoreDbContext))]
-    [Migration("20190811140756_initial")]
-    partial class initial
+    [Migration("20190818093932_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

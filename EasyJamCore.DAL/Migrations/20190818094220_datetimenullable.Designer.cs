@@ -4,14 +4,16 @@ using EasyJamCore.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyJamCore.DAL.Migrations
 {
     [DbContext(typeof(EasyJamCoreDbContext))]
-    partial class EasyJamCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190818094220_datetimenullable")]
+    partial class datetimenullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

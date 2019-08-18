@@ -8,9 +8,23 @@ using System.Threading.Tasks;
 namespace EasyJamCore.DAL.Repository.Implementation
 {
     public class GenericRepository<TModel,TEntity> : IGenericRepository<TModel, TEntity>
-        where TEntity  : class
+        where TEntity  : class, IEntity
         where TModel : class
     {
+        public TModel GetById(int id)
+        {
+            try
+            {
+                var entity = _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefault(e => e.ID == id);
+                return _mapper.Map<TModel>(entity);
+            }
+            catch (System.Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         public IEnumerable<TModel> GetAll()
         {
             var entities = _dbContext.Set<TEntity>().AsNoTracking();
@@ -31,15 +45,42 @@ namespace EasyJamCore.DAL.Repository.Implementation
             }
         }
 
-        public async Task SaveAsync()
+        public void Update(TModel model)
         {
             try
             {
-                await _dbContext.SaveChangesAsync();
+                var entity = _mapper.Map<TModel, TEntity>(model);
+
+                _dbContext.Update(entity);
             }
             catch (System.Exception e)
             {
+                throw e;
+            }
+        }
 
+        public void Delete(TModel model)
+        {
+            try
+            {
+                var entity = _mapper.Map<TModel, TEntity>(model);
+
+                _dbContext.Remove(entity);
+            }
+            catch (System.Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void SaveChanges()
+        {
+            try
+            {
+                 _dbContext.SaveChanges();
+            }
+            catch (System.Exception e)
+            {
                 throw e;
             }
         }

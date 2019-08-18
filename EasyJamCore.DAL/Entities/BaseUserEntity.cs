@@ -21,7 +21,7 @@ namespace EasyJamCore.DAL.Entities
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        public DateTime SignInDate { get; set; }
+        public DateTime? SignInDate { get; set; }
 
         public string Age { get; set; }
 

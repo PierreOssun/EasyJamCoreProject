@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace EasyJamCore.DAL.Entities
 {
@@ -25,6 +26,7 @@ namespace EasyJamCore.DAL.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,6 +37,10 @@ namespace EasyJamCore.DAL.Entities
                 .Build();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        private void Seed(ModelBuilder modelBuilder)
+        {
         }
     }
 }
