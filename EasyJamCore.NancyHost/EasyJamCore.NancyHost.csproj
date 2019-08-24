@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyJamCore.Common\EasyJamCore.Common.csproj" />
+    <ProjectReference Include="..\EasyJamCore.Service\EasyJamCore.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

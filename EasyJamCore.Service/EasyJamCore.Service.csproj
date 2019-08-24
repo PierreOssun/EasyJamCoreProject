@@ -8,8 +8,4 @@
     <ProjectReference Include="..\EasyJamCore.DAL\EasyJamCore.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Implementation\" />
-  </ItemGroup>
-
 </Project>

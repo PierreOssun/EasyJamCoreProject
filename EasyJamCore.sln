@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.Common", "EasyJ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.API", "EasyJamCore.API\EasyJamCore.API.csproj", "{7822A914-7491-4F75-A672-B4EB28E159AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyJamCore.NancyHost", "EasyJamCore.NancyHost\EasyJamCore.NancyHost.csproj", "{28B31390-2C7D-410B-A034-B2C0E4E0DC57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.NancyHost", "EasyJamCore.NancyHost\EasyJamCore.NancyHost.csproj", "{28B31390-2C7D-410B-A034-B2C0E4E0DC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyJamCore.ReactFront", "EasyJamCore.ReactFront\EasyJamCore.ReactFront.csproj", "{483225FA-FF26-43EC-985D-8D54FE4E6C34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{28B31390-2C7D-410B-A034-B2C0E4E0DC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28B31390-2C7D-410B-A034-B2C0E4E0DC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28B31390-2C7D-410B-A034-B2C0E4E0DC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483225FA-FF26-43EC-985D-8D54FE4E6C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483225FA-FF26-43EC-985D-8D54FE4E6C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483225FA-FF26-43EC-985D-8D54FE4E6C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483225FA-FF26-43EC-985D-8D54FE4E6C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

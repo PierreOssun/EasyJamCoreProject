@@ -11,16 +11,16 @@ namespace EasyJamCore.DAL.Repository.Implementation
         where TEntity  : class, IEntity
         where TModel : class
     {
-        public TModel GetById(int id)
+        public async Task<TModel> GetById(int id)
         {
             try
             {
-                var entity = _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefault(e => e.ID == id);
-                return _mapper.Map<TModel>(entity);
+                var entity = await _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id);
+                var result = _mapper.Map<TModel>(entity);
+                return result;
             }
             catch (System.Exception e)
             {
-
                 throw e;
             }
         }

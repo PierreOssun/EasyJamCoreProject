@@ -1,6 +1,4 @@
-﻿using EasyJamCore.DAL.Repository;
-using EasyJamCore.DAL.Repository.Implementation;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace EasyJamCore.API.Modules
 {
@@ -8,7 +6,6 @@ namespace EasyJamCore.API.Modules
     {
         public static void ConfiguredDependencyInjection(IServiceCollection services)
         {
-            services.AddScoped<IDancerRepository, DancerRepository>();
         }
     }
 }

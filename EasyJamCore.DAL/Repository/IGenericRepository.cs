@@ -7,7 +7,7 @@ namespace EasyJamCore.DAL.Repository
     public interface IGenericRepository<TModel, TEntity>
         where TEntity : class, IEntity
     {
-        TModel GetById(int id);
+        Task<TModel> GetById(int id);
         IEnumerable<TModel> GetAll();
         Task Add(TModel model);
         void Delete(TModel model);
