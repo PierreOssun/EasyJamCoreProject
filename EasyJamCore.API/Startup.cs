@@ -1,12 +1,7 @@
-﻿using System;
-using AutoMapper;
-using EasyJamCore.API.Modules;
-using EasyJamCore.DAL.Entities;
-using EasyJamCore.DAL.Modules;
+﻿using EasyJamCore.API.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,15 +19,6 @@ namespace EasyJamCore.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IConfiguration configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<EasyJamCoreDbContext>(options => options.UseSqlServer(connectionString));
-
-            services.AddAutoMapper(typeof(AutoMapperConfiguration));
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSwaggerGen(x =>

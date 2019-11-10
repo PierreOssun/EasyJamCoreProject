@@ -15,9 +15,9 @@ namespace EasyJamCore.API.Controllers
         //{
         //}
 
-        //[HttpPost("PostDancers")]  
-        //public void Create(DancerModel dancer)
-        //{
-        //}
+        [HttpPost("PostDancers")]
+        public void Create(DancerModel dancer)
+        {
+        }
     }
 }
