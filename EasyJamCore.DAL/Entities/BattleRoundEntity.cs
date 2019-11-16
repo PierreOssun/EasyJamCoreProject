@@ -11,8 +11,7 @@ namespace EasyJamCore.DAL.Entities
         public int Order { get; set; }
         public DateTime ScheduledTime { get; set; }
         public DateTime StartTime { get; set; }
-        public BattleParticipantEntity Winner { get; set; }
-        public BattleParticipantEntity Loser { get; set; }
+        public IEnumerable<BattleParticipantEntity> Winner { get; set; }
         public virtual IEnumerable<BattleParticipantEntity> Participants { get; set; }
     }
 }

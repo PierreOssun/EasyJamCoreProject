@@ -23,7 +23,7 @@ namespace EasyJamCore.DAL.Entities
 
         public DateTime? SignInDate { get; set; }
 
-        public string Age { get; set; }
+        public DateTime? Birthdate { get; set; }
 
         public virtual ICollection<CrewEntity> Crews { get; set; }
 
