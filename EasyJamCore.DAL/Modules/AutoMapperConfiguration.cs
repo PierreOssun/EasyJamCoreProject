@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using EasyJamCore.Common.Model;
-using EasyJamCore.DAL.Entities;
-
-namespace EasyJamCore.DAL.Modules
+﻿namespace EasyJamCore.DAL.Modules
 {
+    using AutoMapper;
+    using EasyJamCore.Common.Model;
+    using EasyJamCore.DAL.Entities;
+
     public class AutoMapperConfiguration : Profile
     {
         public AutoMapperConfiguration()

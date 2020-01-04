@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EasyJamCore.Common.Model
+﻿namespace EasyJamCore.Common.Model
 {
+    using System;
+    using System.Collections.Generic;
+
     public class BattleModel
     {
         public int ID { get; set; }
 
         public string BattleName { get; set; }
 
-        public Type Type { get; set; }
+        public Common.Enums.Type Type { get; set; }
 
         public DateTime ScheduledTime { get; set; }
 
@@ -28,10 +28,5 @@ namespace EasyJamCore.Common.Model
         public virtual IEnumerable<SpeakerModel> Speaker { get; set; }
 
         public virtual IEnumerable<BattleRoundModel> BattleRound { get; set; }
-    }
-
-    public enum Type
-    {
-        Break, AllStyle, HipHop
     }
 }

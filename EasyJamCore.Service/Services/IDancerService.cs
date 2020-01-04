@@ -1,9 +1,9 @@
-﻿using EasyJamCore.Common.Model;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace EasyJamCore.Service.Services
+﻿namespace EasyJamCore.Service.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using EasyJamCore.Common.Model;
+
     public interface IDancerService
     {
         Task<DancerModel> GetAsync(int id);

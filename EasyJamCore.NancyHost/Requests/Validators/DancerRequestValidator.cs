@@ -1,11 +1,8 @@
-﻿using EasyJamCore.NancyHost.Request;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EasyJamCore.NancyHost.Requests.Validators
+﻿namespace EasyJamCore.NancyHost.Requests.Validators
 {
+    using EasyJamCore.NancyHost.Request;
+    using FluentValidation;
+
     public class DancerRequestValidator : AbstractValidator<DancerRequest>
     {
         public DancerRequestValidator()

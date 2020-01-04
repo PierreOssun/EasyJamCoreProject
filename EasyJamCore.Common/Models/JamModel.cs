@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EasyJamCore.Common.Model
+﻿namespace EasyJamCore.Common.Model
 {
+    using System;
+    using System.Collections.Generic;
+
     public class JamModel
     {
         public int ID { get; set; }
+
         public string JamName { get; set; }
+
         public DateTime ScheduledTime { get; set; }
 
         public DateTime StartTime { get; set; }

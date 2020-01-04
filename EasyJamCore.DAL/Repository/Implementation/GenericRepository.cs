@@ -1,47 +1,56 @@
-﻿using AutoMapper;
-using EasyJamCore.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EasyJamCore.DAL.Repository.Implementation
+﻿namespace EasyJamCore.DAL.Repository.Implementation
 {
-    public class GenericRepository<TModel,TEntity> : IGenericRepository<TModel, TEntity>
-        where TEntity  : class, IEntity
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using EasyJamCore.DAL.Entities;
+    using Microsoft.EntityFrameworkCore;
+
+    public class GenericRepository<TModel, TEntity> : IGenericRepository<TModel, TEntity>
+        where TEntity : class, IEntity
         where TModel : class
     {
+        private readonly EasyJamCoreDbContext dbContext;
+        private readonly IMapper mapper;
+
+        public GenericRepository(EasyJamCoreDbContext dbContext, IMapper mapper)
+        {
+            this.dbContext = dbContext;
+            this.mapper = mapper;
+        }
+
         public async Task<TModel> GetById(int id)
         {
             try
             {
-                var entity = await _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id);
-                var result = _mapper.Map<TModel>(entity);
+                var entity = await dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id).ConfigureAwait(true);
+                var result = mapper.Map<TModel>(entity);
                 return result;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw e;
+                throw;
             }
         }
 
         public IEnumerable<TModel> GetAll()
         {
-            var entities = _dbContext.Set<TEntity>().AsNoTracking();
-            return _mapper.Map<IEnumerable<TModel>>(entities).AsEnumerable();
+            IQueryable<TEntity> entities = dbContext.Set<TEntity>().AsNoTracking();
+            return mapper.Map<IEnumerable<TModel>>(entities).AsEnumerable();
         }
 
         public async Task Add(TModel model)
         {
             try
             {
-                var entity = _mapper.Map<TModel, TEntity>(model);
+                var entity = mapper.Map<TModel, TEntity>(model);
 
-                await _dbContext.AddAsync(entity);
+                await dbContext.AddAsync(entity).ConfigureAwait(true);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw e;
+                throw;
             }
         }
 
@@ -49,13 +58,13 @@ namespace EasyJamCore.DAL.Repository.Implementation
         {
             try
             {
-                var entity = _mapper.Map<TModel, TEntity>(model);
+                var entity = mapper.Map<TModel, TEntity>(model);
 
-                _dbContext.Update(entity);
+                dbContext.Update(entity);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw e;
+                throw;
             }
         }
 
@@ -63,13 +72,13 @@ namespace EasyJamCore.DAL.Repository.Implementation
         {
             try
             {
-                var entity = _mapper.Map<TModel, TEntity>(model);
+                var entity = mapper.Map<TModel, TEntity>(model);
 
-                _dbContext.Remove(entity);
+                dbContext.Remove(entity);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw e;
+                throw;
             }
         }
 
@@ -77,21 +86,12 @@ namespace EasyJamCore.DAL.Repository.Implementation
         {
             try
             {
-                 _dbContext.SaveChanges();
+                 dbContext.SaveChanges();
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw e;
+                throw;
             }
         }
-
-        public GenericRepository(EasyJamCoreDbContext dbContext, IMapper mapper)
-        {
-            _mapper = mapper;
-            _dbContext = dbContext;
-        }
-
-        private readonly EasyJamCoreDbContext _dbContext;
-        private readonly IMapper _mapper;
     }
 }

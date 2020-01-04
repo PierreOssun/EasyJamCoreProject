@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.API", "EasyJamC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.NancyHost", "EasyJamCore.NancyHost\EasyJamCore.NancyHost.csproj", "{28B31390-2C7D-410B-A034-B2C0E4E0DC57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyJamCore.ReactFront", "EasyJamCore.ReactFront\EasyJamCore.ReactFront.csproj", "{483225FA-FF26-43EC-985D-8D54FE4E6C34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyJamCore.ReactFront", "EasyJamCore.ReactFront\EasyJamCore.ReactFront.csproj", "{483225FA-FF26-43EC-985D-8D54FE4E6C34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{396AE6B4-4F7D-4B81-8C37-5DE44BA06298}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

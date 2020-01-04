@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-
-namespace EasyJamCore.API
+﻿namespace EasyJamCore.API
 {
-    public class Program
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+
+    public static class Program
     {
         public static void Main(string[] args)
         {

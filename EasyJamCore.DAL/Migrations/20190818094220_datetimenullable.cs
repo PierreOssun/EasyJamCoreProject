@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace EasyJamCore.DAL.Migrations
+﻿namespace EasyJamCore.DAL.Migrations
 {
-    public partial class datetimenullable : Migration
+    using System;
+    using Microsoft.EntityFrameworkCore.Migrations;
+
+    public partial class DateTimeNullable : Migration
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "migration class")]
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
@@ -38,6 +39,7 @@ namespace EasyJamCore.DAL.Migrations
                 oldClrType: typeof(DateTime));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "migration class")]
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(

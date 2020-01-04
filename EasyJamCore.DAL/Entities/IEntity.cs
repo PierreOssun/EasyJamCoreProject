@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EasyJamCore.DAL.Entities
+﻿namespace EasyJamCore.DAL.Entities
 {
+    using System.ComponentModel.DataAnnotations;
+
     public interface IEntity
     {
         [Key]

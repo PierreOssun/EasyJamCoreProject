@@ -1,8 +1,8 @@
-﻿using EasyJamCore.Common.Model;
-using System.Collections.Generic;
-
-namespace EasyJamCore.NancyHost.Responses
+﻿namespace EasyJamCore.NancyHost.Responses
 {
+    using System.Collections.Generic;
+    using EasyJamCore.Common.Model;
+
     public class DancersResponse
     {
         public List<DancerModel> Dancers { get; set; }

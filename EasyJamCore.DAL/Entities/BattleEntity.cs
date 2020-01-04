@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace EasyJamCore.DAL.Entities
+﻿namespace EasyJamCore.DAL.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class BattleEntity : IEntity
     {
         [Key]
         public int ID { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required]
+        [MaxLength(50)]
         public string BattleName { get; set; }
 
-        public Type Type { get; set; }
+        public Common.Enums.Type Type { get; set; }
 
         public DateTime ScheduledTime { get; set; }
 
@@ -32,10 +33,5 @@ namespace EasyJamCore.DAL.Entities
         public virtual IEnumerable<SpeakerEntity> Speaker { get; set; }
 
         public virtual IEnumerable<BattleRoundEntity> BattleRound { get; set; }
-    }
-
-    public enum Type
-    {
-        Break, AllStyle, HipHop
     }
 }

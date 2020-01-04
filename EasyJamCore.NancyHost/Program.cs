@@ -1,11 +1,11 @@
-﻿using System.IO;
-using Microsoft.AspNetCore.Hosting;
-
-namespace EasyJamCore.NancyHost
+﻿namespace EasyJamCore.NancyHost
 {
-    public class Program
+    using System.IO;
+    using Microsoft.AspNetCore.Hosting;
+
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var host = new WebHostBuilder()
                 .UseContentRoot(Directory.GetCurrentDirectory())

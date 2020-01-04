@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace EasyJamCore.DAL.Entities
+﻿namespace EasyJamCore.DAL.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class BaseUserEntity : IEntity
     {
-        [Required, MaxLength(50)]
+        [Required]
+        [MaxLength(50)]
         public string Blaze { get; set; }
 
-        [Required, MaxLength(1)]
+        [Required]
+        [MaxLength(1)]
         public string Gender { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required]
+        [MaxLength(50)]
         public string Email { get; set; }
 
         [MaxLength(50)]
@@ -30,6 +33,7 @@ namespace EasyJamCore.DAL.Entities
         public virtual ICollection<CityEntity> CityEntity { get; set; }
 
         public virtual ICollection<CountryEntity> CountryEntity { get; set; }
+
         public int ID { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace EasyJamCore.DAL.Migrations
 {
     [DbContext(typeof(EasyJamCoreDbContext))]
     [Migration("20190818094220_datetimenullable")]
-    partial class datetimenullable
+    partial class DateTimeNullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

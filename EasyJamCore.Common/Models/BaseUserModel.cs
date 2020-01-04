@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EasyJamCore.Common.Model
+﻿namespace EasyJamCore.Common.Model
 {
+    using System;
+    using System.Collections.Generic;
+
     public class BaseUserModel
     {
         public string Blaze { get; set; }
@@ -24,6 +24,7 @@ namespace EasyJamCore.Common.Model
         public virtual ICollection<CityModel> CityEntity { get; set; }
 
         public virtual ICollection<CountryModel> CountryEntity { get; set; }
+
         public int ID { get; set; }
     }
 }

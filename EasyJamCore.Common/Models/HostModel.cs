@@ -1,5 +1,4 @@
-﻿
-namespace EasyJamCore.Common.Model
+﻿namespace EasyJamCore.Common.Model
 {
     public class HostModel : BaseUserModel
     {

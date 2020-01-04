@@ -1,19 +1,21 @@
-﻿using EasyJamCore.NancyHost.Request;
-using EasyJamCore.NancyHost.Responses;
-using EasyJamCore.Service.Services;
-using Nancy;
-using System.Threading.Tasks;
-
-namespace EasyJamCore.NancyHost.Modules
+﻿namespace EasyJamCore.NancyHost.Modules
 {
+    using System;
+    using System.Threading.Tasks;
+    using EasyJamCore.NancyHost.Request;
+    using EasyJamCore.NancyHost.Responses;
+    using EasyJamCore.Service.Services;
+    using Nancy;
+
     public class DancerModule : NancyModule
     {
-        readonly IDancerService _dancerService;
-        public DancerModule(IAppConfiguration appConfig, IDancerService dancerService)
-        {
-            _dancerService = dancerService;
+        private readonly IDancerService dancerService;
 
-            Get("/dancer/", args => AllDancers());
+        public DancerModule(IDancerService dancerService)
+        {
+            this.dancerService = dancerService ?? throw new ArgumentNullException(nameof(dancerService));
+
+            Get("/dancers/", args => AllDancers());
 
             Get("/dancer/", args => GetDancer(args));
         }
@@ -22,18 +24,19 @@ namespace EasyJamCore.NancyHost.Modules
         {
             return new DancersResponse
             {
-                Dancers = _dancerService.GetAllDancers()
+                Dancers = dancerService.GetAllDancers(),
             };
         }
 
         public async Task<object> GetDancer(DancerRequest request)
         {
-            var dancer = await _dancerService.GetAsync(request.Id);
-            if(dancer == null)
+            if (request == null)
             {
-                return HttpStatusCode.NotFound;
+                throw new ArgumentNullException(request + " variable request cannot be null");
             }
-            return dancer;
+
+            var dancer = await dancerService.GetAsync(request.Id).ConfigureAwait(false);
+            return dancer == null ? HttpStatusCode.NotFound : (object)dancer;
         }
     }
 }

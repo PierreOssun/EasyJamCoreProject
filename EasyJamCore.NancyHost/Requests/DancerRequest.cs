@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EasyJamCore.NancyHost.Request
+﻿namespace EasyJamCore.NancyHost.Request
 {
     public class DancerRequest
     {
