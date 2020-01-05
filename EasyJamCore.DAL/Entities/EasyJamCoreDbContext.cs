@@ -50,7 +50,8 @@
                 .AddJsonFile("appsettings.json")
                 .Build();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString, providerOptions => providerOptions.CommandTimeout(20))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
         private void Seed(ModelBuilder modelBuilder)

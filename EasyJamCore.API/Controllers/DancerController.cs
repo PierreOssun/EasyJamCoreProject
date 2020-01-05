@@ -1,37 +1,35 @@
 ﻿namespace EasyJamCore.API.Controllers
 {
-    using System.Net.Http;
     using System.Threading.Tasks;
-    using EasyJamCore.Common.Model;
+    using EasyJamCore.API.ControllerHelpers;
+    using EasyJamCore.Common.DTO;
+    using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
 
     [Route("api/Dancers")]
+    [EnableCors("AllowMyOrigin")]
     [ApiController]
     public class DancerController : Controller
     {
-        // GET api/
-        [HttpGet("GetDancerById")]
-        public async Task<IActionResult> GetDancerById(int id)
+        private static string baseUri;
+
+        public DancerController(IConfiguration config)
         {
-            string url = "https://localhost/5000/dancer/{id}";
+            baseUri = config.GetValue<string>("NancyBaseUrl");
+        }
 
-            using (HttpClient client = new HttpClient())
-            {
-                return Json(await client.GetStringAsync(url).ConfigureAwait(false));
-            }
-
-            // var result = _authorRepository.GetByNameSubstring(namelike);
-            // if (!result.Any())
-            // {
-            //    return NotFound(namelike);
-            // }
-            // return Ok(result);
-
-            // var dancer = await _dancerService.GetAsync(request.Id);
+        [HttpGet("GetDancerById")]
+        public async Task<DancerDto> GetDancerById(int id)
+        {
+            var getDancer = await ClientHelper.CallGET(baseUri, $"/dancer", id.ToString()).ConfigureAwait(false);
+            DancerDto resultset = JsonConvert.DeserializeObject(getDancer, typeof(DancerDto)) as DancerDto;
+            return resultset;
         }
 
         [HttpPost("PostDancers")]
-        public void Create(DancerModel dancer)
+        public void Create(DancerDto dancer)
         {
         }
     }

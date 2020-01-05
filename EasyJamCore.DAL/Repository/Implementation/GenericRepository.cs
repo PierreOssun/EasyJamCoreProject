@@ -24,7 +24,7 @@
         {
             try
             {
-                var entity = await dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id).ConfigureAwait(true);
+                var entity = await dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id).ConfigureAwait(false);
                 var result = mapper.Map<TModel>(entity);
                 return result;
             }

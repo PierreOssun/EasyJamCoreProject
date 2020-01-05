@@ -4,9 +4,9 @@
     using EasyJamCore.Common.Model;
     using EasyJamCore.DAL.Entities;
 
-    public class AutoMapperConfiguration : Profile
+    public class DalAutoMapperConfig : Profile
     {
-        public AutoMapperConfiguration()
+        public DalAutoMapperConfig()
         {
             CreateMap<DancerModel, DancerEntity>();
             CreateMap<DancerEntity, DancerModel>();

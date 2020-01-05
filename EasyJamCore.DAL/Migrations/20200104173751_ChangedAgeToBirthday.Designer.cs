@@ -4,14 +4,16 @@ using EasyJamCore.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyJamCore.DAL.Migrations
 {
     [DbContext(typeof(EasyJamCoreDbContext))]
-    partial class EasyJamCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200104173751_ChangedAgeToBirthday")]
+    partial class ChangedAgeToBirthday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("JamEntityID");
 
-                    b.ToTable("Battle");
+                    b.ToTable("BattleEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.BattleParticipantEntity", b =>
@@ -83,7 +85,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattleRoundEntityID1");
 
-                    b.ToTable("BattleParticipant");
+                    b.ToTable("BattleParticipantEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.BattlePreliminaryEntity", b =>
@@ -98,7 +100,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("BattlePreliminary");
+                    b.ToTable("BattlePreliminaryEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.BattleRoundEntity", b =>
@@ -123,7 +125,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattlePreliminaryEntityID");
 
-                    b.ToTable("BattleRound");
+                    b.ToTable("BattleRoundEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.CityEntity", b =>
@@ -162,7 +164,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("SpeakerEntityID");
 
-                    b.ToTable("City");
+                    b.ToTable("CityEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.CountryEntity", b =>
@@ -201,7 +203,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("SpeakerEntityID");
 
-                    b.ToTable("Country");
+                    b.ToTable("CountryEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.CrewEntity", b =>
@@ -238,7 +240,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("SpeakerEntityID");
 
-                    b.ToTable("Crew");
+                    b.ToTable("CrewEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.DancerEntity", b =>
@@ -275,7 +277,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattleParticipantEntityID");
 
-                    b.ToTable("Dancer");
+                    b.ToTable("DancerEntitiy");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.DjEntity", b =>
@@ -312,7 +314,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattleEntityID");
 
-                    b.ToTable("Dj");
+                    b.ToTable("DjEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.HostEntity", b =>
@@ -349,7 +351,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("JamEntityID");
 
-                    b.ToTable("Host");
+                    b.ToTable("HostEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.JamEntity", b =>
@@ -377,7 +379,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("CountryID");
 
-                    b.ToTable("Jam");
+                    b.ToTable("JamEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.JudgeEntity", b =>
@@ -414,7 +416,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattleEntityID");
 
-                    b.ToTable("Judge");
+                    b.ToTable("JudgeEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.SpeakerEntity", b =>
@@ -451,7 +453,7 @@ namespace EasyJamCore.DAL.Migrations
 
                     b.HasIndex("BattleEntityID");
 
-                    b.ToTable("Speaker");
+                    b.ToTable("SpeakerEntity");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.BattleEntity", b =>
@@ -498,54 +500,54 @@ namespace EasyJamCore.DAL.Migrations
             modelBuilder.Entity("EasyJamCore.DAL.Entities.CityEntity", b =>
                 {
                     b.HasOne("EasyJamCore.DAL.Entities.CrewEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("CrewEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.DancerEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("DancerEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.DjEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("DjEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.HostEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("HostEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.JudgeEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("JudgeEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.SpeakerEntity")
-                        .WithMany("Cities")
+                        .WithMany("CityEntity")
                         .HasForeignKey("SpeakerEntityID");
                 });
 
             modelBuilder.Entity("EasyJamCore.DAL.Entities.CountryEntity", b =>
                 {
                     b.HasOne("EasyJamCore.DAL.Entities.CrewEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("CrewEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.DancerEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("DancerEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.DjEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("DjEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.HostEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("HostEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.JudgeEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("JudgeEntityID");
 
                     b.HasOne("EasyJamCore.DAL.Entities.SpeakerEntity")
-                        .WithMany("Countries")
+                        .WithMany("CountryEntity")
                         .HasForeignKey("SpeakerEntityID");
                 });
 

@@ -26,7 +26,7 @@
                 x.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "EasyJam" });
             });
 
-            DependencyConfiguration.ConfiguredDependencyInjection(services);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +53,8 @@
             {
                 option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
             });
+
+            app.UseCors("AllowMyOrigin");
 
             app.UseHttpsRedirection();
             app.UseMvc();

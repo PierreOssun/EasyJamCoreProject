@@ -1,7 +1,9 @@
 ﻿namespace EasyJamCore.DAL.Entities
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("City")]
     public class CityEntity : IEntity
     {
         [Key]

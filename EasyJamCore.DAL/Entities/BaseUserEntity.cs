@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("BaseUser")]
     public class BaseUserEntity : IEntity
     {
         [Required]
@@ -30,9 +32,9 @@
 
         public virtual ICollection<CrewEntity> Crews { get; set; }
 
-        public virtual ICollection<CityEntity> CityEntity { get; set; }
+        public virtual ICollection<CityEntity> Cities { get; set; }
 
-        public virtual ICollection<CountryEntity> CountryEntity { get; set; }
+        public virtual ICollection<CountryEntity> Countries { get; set; }
 
         public int ID { get; set; }
     }

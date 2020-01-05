@@ -16,7 +16,7 @@
         {
             if (env == null)
             {
-                throw new ArgumentNullException(env + " variable env cannot be null");
+                throw new ArgumentNullException(nameof(env));
             }
 
             var builder = new ConfigurationBuilder()
