@@ -9,7 +9,7 @@
     using Newtonsoft.Json;
 
     [Route("api/Dancers")]
-    [EnableCors("AllowMyOrigin")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class DancerController : Controller
     {
