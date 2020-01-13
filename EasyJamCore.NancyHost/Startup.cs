@@ -3,6 +3,7 @@
     using System;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Server.Kestrel.Core;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Nancy.Owin;
@@ -12,7 +13,7 @@
         private readonly IConfiguration config;
         private IServiceCollection services;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             if (env == null)
             {
@@ -29,6 +30,11 @@
         public void ConfigureServices(IServiceCollection services)
         {
             this.services = services;
+
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app)
